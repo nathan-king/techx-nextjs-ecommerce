@@ -8,10 +8,16 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
+  const { title, slug, description, price } = product;
+
   return (
-    <Card>
-      <h3>{product.title}</h3>
-      <p>{`$${product.price}`}</p>
+    <Card className="p-5">
+      <h3>{title}</h3>
+      <p>{`$${price}`}</p>
+      <p>{description}</p>
+      <Button>
+        <Link href={`/products/${slug}`}>See Product</Link>
+      </Button>
     </Card>
   );
 }

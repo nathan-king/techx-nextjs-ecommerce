@@ -1,9 +1,11 @@
 import { Product } from "@/lib/types";
+import { slugify } from "@/lib/utils";
 
 export const products: Product[] = [
   {
     id: "1",
     title: "Premium Wireless Headphones",
+    slug: slugify("Premium Wireless Headphones"),
     description:
       "Noise-cancelling wireless headphones with 30-hour battery life",
     price: 299.99,
@@ -18,6 +20,7 @@ export const products: Product[] = [
   },
   {
     id: "2",
+    slug: slugify("Mechanical Gaming Keyboard"),
     title: "Mechanical Gaming Keyboard",
     description:
       "RGB mechanical keyboard with customizable switches and anti-ghosting",
@@ -33,6 +36,7 @@ export const products: Product[] = [
   },
   {
     id: "3",
+    slug: slugify("Wireless Gaming Mouse"),
     title: "Wireless Gaming Mouse",
     description:
       "High-precision wireless mouse with customizable DPI and ergonomic design",
@@ -48,6 +52,7 @@ export const products: Product[] = [
   },
   {
     id: "4",
+    slug: slugify("Smartphone 128GB"),
     title: "Smartphone 128GB",
     description:
       "Latest smartphone with triple camera system and 5G connectivity",
@@ -63,6 +68,7 @@ export const products: Product[] = [
   },
   {
     id: "5",
+    slug: slugify("Fitness Smartwatch"),
     title: "Fitness Smartwatch",
     description:
       "Advanced smartwatch with heart rate monitoring, GPS, and sleep tracking",
@@ -78,6 +84,7 @@ export const products: Product[] = [
   },
   {
     id: "6",
+    slug: slugify("Wireless Earbuds"),
     title: "Wireless Earbuds",
     description:
       "True wireless earbuds with charging case and 24hr battery life",
@@ -93,6 +100,7 @@ export const products: Product[] = [
   },
   {
     id: "7",
+    slug: slugify("Wireless Phone Charger"),
     title: "Wireless Phone Charger",
     description:
       "Fast-charging wireless pad compatible with all Qi-enabled devices",
@@ -108,6 +116,7 @@ export const products: Product[] = [
   },
   {
     id: "8",
+    slug: slugify("Laptop Stand Aluminum"),
     title: "Laptop Stand Aluminum",
     description:
       "Adjustable aluminum laptop stand for better ergonomics and cooling",
@@ -123,6 +132,7 @@ export const products: Product[] = [
   },
   {
     id: "9",
+    slug: slugify("Portable SSD 1TB"),
     title: "Portable SSD 1TB",
     description:
       "High-speed portable solid state drive with USB-C connectivity",
@@ -138,6 +148,7 @@ export const products: Product[] = [
   },
   {
     id: "10",
+    slug: slugify("Bluetooth Portable Speaker"),
     title: "Bluetooth Portable Speaker",
     description:
       "Waterproof portable speaker with 360° sound and 20-hour battery",
