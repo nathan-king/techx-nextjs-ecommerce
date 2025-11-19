@@ -1,5 +1,15 @@
 import { Product } from "@/lib/types";
 import { slugify } from "@/lib/utils";
+import headphones from "@/public/products/headphones.jpg";
+import keyboard from "@/public/products/mechanical keyboard.jpg";
+import mouse from "@/public/products/gaming mouse.jpg";
+import smartphone from "@/public/products/smartphone.jpg";
+import smartwatch from "@/public/products/smartwatch.jpg";
+import earbuds from "@/public/products/earbuds.jpg";
+import charger from "@/public/products/wireless charger.jpg";
+import stand from "@/public/products/laptop stand.jpg";
+import ssd from "@/public/products/portable SSD.jpg";
+import speaker from "@/public/products/speaker.jpg";
 
 export const products: Product[] = [
   {
@@ -10,7 +20,7 @@ export const products: Product[] = [
       "Noise-cancelling wireless headphones with 30-hour battery life",
     price: 299.99,
     originalPrice: 399.99,
-    image: "/images/headphones.jpg",
+    image: headphones,
     images: ["/images/headphones-1.jpg", "/images/headphones-2.jpg"],
     category: "audio",
     inventory: 15,
@@ -26,7 +36,7 @@ export const products: Product[] = [
       "RGB mechanical keyboard with customizable switches and anti-ghosting",
     price: 129.99,
     originalPrice: 159.99,
-    image: "/images/keyboard.jpg",
+    image: keyboard,
     images: ["/images/keyboard-1.jpg", "/images/keyboard-2.jpg"],
     category: "computers",
     inventory: 22,
@@ -42,7 +52,7 @@ export const products: Product[] = [
       "High-precision wireless mouse with customizable DPI and ergonomic design",
     price: 79.99,
     originalPrice: 99.99,
-    image: "/images/mouse.jpg",
+    image: mouse,
     images: ["/images/mouse-1.jpg", "/images/mouse-2.jpg"],
     category: "computers",
     inventory: 30,
@@ -58,7 +68,7 @@ export const products: Product[] = [
       "Latest smartphone with triple camera system and 5G connectivity",
     price: 899.99,
     originalPrice: 999.99,
-    image: "/images/phone.jpg",
+    image: smartphone,
     images: ["/images/phone-1.jpg", "/images/phone-2.jpg"],
     category: "mobile",
     inventory: 12,
@@ -74,7 +84,7 @@ export const products: Product[] = [
       "Advanced smartwatch with heart rate monitoring, GPS, and sleep tracking",
     price: 199.99,
     originalPrice: 249.99,
-    image: "/images/smartwatch.jpg",
+    image: smartwatch,
     images: ["/images/smartwatch-1.jpg", "/images/smartwatch-2.jpg"],
     category: "wearables",
     inventory: 18,
@@ -90,7 +100,7 @@ export const products: Product[] = [
       "True wireless earbuds with charging case and 24hr battery life",
     price: 149.99,
     originalPrice: 199.99,
-    image: "/images/earbuds.jpg",
+    image: earbuds,
     images: ["/images/earbuds-1.jpg", "/images/earbuds-2.jpg"],
     category: "audio",
     inventory: 35,
@@ -106,7 +116,7 @@ export const products: Product[] = [
       "Fast-charging wireless pad compatible with all Qi-enabled devices",
     price: 49.99,
     originalPrice: 69.99,
-    image: "/images/charger.jpg",
+    image: charger,
     images: ["/images/charger-1.jpg", "/images/charger-2.jpg"],
     category: "accessories",
     inventory: 42,
@@ -122,7 +132,7 @@ export const products: Product[] = [
       "Adjustable aluminum laptop stand for better ergonomics and cooling",
     price: 59.99,
     originalPrice: 79.99,
-    image: "/images/laptop-stand.jpg",
+    image: stand,
     images: ["/images/laptop-stand-1.jpg", "/images/laptop-stand-2.jpg"],
     category: "computers",
     inventory: 25,
@@ -138,7 +148,7 @@ export const products: Product[] = [
       "High-speed portable solid state drive with USB-C connectivity",
     price: 129.99,
     originalPrice: 159.99,
-    image: "/images/ssd.jpg",
+    image: ssd,
     images: ["/images/ssd-1.jpg", "/images/ssd-2.jpg"],
     category: "storage",
     inventory: 20,
@@ -154,7 +164,7 @@ export const products: Product[] = [
       "Waterproof portable speaker with 360° sound and 20-hour battery",
     price: 89.99,
     originalPrice: 119.99,
-    image: "/images/speaker.jpg",
+    image: speaker,
     images: ["/images/speaker-1.jpg", "/images/speaker-2.jpg"],
     category: "audio",
     inventory: 19,
