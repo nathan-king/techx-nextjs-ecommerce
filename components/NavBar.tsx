@@ -10,7 +10,7 @@ import {
 export default function NavBar() {
   return (
     <NavigationMenu>
-      <NavigationMenuList>
+      <NavigationMenuList className="flex gap-20">
         <NavigationMenuItem>
           <Link href="/products">Products</Link>
         </NavigationMenuItem>
