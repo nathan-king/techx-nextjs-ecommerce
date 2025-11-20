@@ -1,4 +1,7 @@
 import { getProductBySlug } from "@/lib/data/products";
+import Image from "next/image";
+import ProductSideBar from "@/components/ProductSidebar";
+// import { useState } from "react";
 
 interface Props {
   params: Promise<{
@@ -15,14 +18,18 @@ export default async function ProductPage({ params }: Props) {
     return <div>Product doesn't exist</div>;
   }
 
-  const { title, description, price, category } = product;
+  const { title, image } = product;
 
   return (
-    <div>
-      <h1 className="text-5xl">{title}</h1>
-      <p>{description}</p>
-      <p>{price}</p>
-      <p>{category}</p>
+    <div className="flex w-full justify-between">
+      <Image
+        src={image}
+        alt={title}
+        height={500}
+        width={500}
+        className="h-150 w-150 shadow-lg"
+      />
+      <ProductSideBar product={product} />
     </div>
   );
 }
