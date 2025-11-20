@@ -12,3 +12,13 @@ export const getProductBySlug = async (
 ): Promise<Product | null> => {
   return products.find((product) => product.slug === slug) || null;
 };
+
+export const getProductByCategory = async (
+  category: string
+): Promise<Product[] | null> => {
+  const productArray = products.filter(
+    (product) => product.category === category
+  );
+  console.log(productArray);
+  return productArray.length > 0 ? productArray : null;
+};

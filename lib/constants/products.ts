@@ -70,7 +70,7 @@ export const products: Product[] = [
     originalPrice: 999.99,
     image: smartphone,
     images: ["/images/phone-1.jpg", "/images/phone-2.jpg"],
-    category: "mobile",
+    category: "mobiles",
     inventory: 12,
     rating: 4.7,
     reviewCount: 203,

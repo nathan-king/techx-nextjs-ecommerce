@@ -15,7 +15,6 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   const items = useCartStore((state) => state.items);
   const addItem = useCartStore((state) => state.addItem);
-  console.log(items);
 
   return (
     <div className="my-3">
