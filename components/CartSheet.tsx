@@ -14,6 +14,7 @@ import {
 import { useRouter } from "next/navigation";
 import { Handbag } from "lucide-react";
 import { routerServerGlobal } from "next/dist/server/lib/router-utils/router-server-context";
+import { Separator } from "./ui/separator";
 
 export default function Cart() {
   const router = useRouter();
@@ -33,7 +34,7 @@ export default function Cart() {
         <div className="relative">
           <Handbag />
           {items.length > 0 ? (
-            <span className="absolute -top-2 -right-3 bg-red-600 text-white p-0.5 text-xs rounded-full h-5 w-5 flex item-center justify-center">
+            <span className="absolute -top-2 -right-3 bg-primary text-white p-0.5 text-[8px] rounded-full h-4 w-4 flex item-center justify-center">
               {items.length}
             </span>
           ) : null}
@@ -47,14 +48,15 @@ export default function Cart() {
               const { product, quantity } = item;
               const { title, price } = product;
               return (
-                <div key={item.id} className="mb-10">
+                <div key={item.id} className="flex flex-col mb-10 items-center">
                   <h3 className="text-lg font-semibold">{title}</h3>
-                  <p>{price}</p>
+                  <p>${price}</p>
                   <p>{quantity}</p>
-                  <div className="flex justify-center gap-10">
+                  <div className="flex justify-center gap-10 mb-10">
                     <Button onClick={() => removeItem(product)}>-</Button>
                     <Button onClick={() => addItem(product)}>+</Button>
                   </div>
+                  <Separator />
                 </div>
               );
             })

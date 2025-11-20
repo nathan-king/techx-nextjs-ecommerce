@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/lib/store/cart-store";
 import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
 
 export default function CartPage() {
   const items = useCartStore((state) => state.items);
@@ -15,20 +16,23 @@ export default function CartPage() {
         {items.length > 0 ? (
           items.map((item) => {
             const { product, quantity } = item;
-            const { title, price } = product;
+            const { title, price, image } = product;
             return (
-              <div key={item.id}>
-                <div className="mb-10 flex flex-col justify-center items-center">
-                  <h3 className="text-lg font-semibold">{title}</h3>
-                  <p>{price}</p>
-                  <p>{quantity}</p>
+              <div className="flex">
+                <Image src={image} alt={title} height={400} width={400} />
+                <div key={item.id}>
+                  <div className="mb-10 flex flex-col justify-center items-center">
+                    <h3 className="text-lg font-semibold">{title}</h3>
+                    <p>{price}</p>
+                    <p>{quantity}</p>
 
-                  <div className="flex justify-center gap-10">
-                    <Button onClick={() => removeItem(product)}>-</Button>
-                    <Button onClick={() => addItem(product)}>+</Button>
+                    <div className="flex justify-center gap-10">
+                      <Button onClick={() => removeItem(product)}>-</Button>
+                      <Button onClick={() => addItem(product)}>+</Button>
+                    </div>
                   </div>
+                  <Separator className="my-4" />
                 </div>
-                <Separator className="my-4" />
               </div>
             );
           })
