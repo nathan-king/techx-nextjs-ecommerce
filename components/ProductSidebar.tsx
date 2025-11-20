@@ -1,7 +1,8 @@
 "use client";
 
 import { Product } from "@/lib/types";
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
+import { useCartStore } from "@/lib/store/cart-store";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
@@ -11,7 +12,8 @@ interface Props {
 
 export default function ProductSidebar({ product }: Props) {
   const [quantity, setQuantity] = useState(0);
-  const { title, description, price, category } = product;
+  const { title, description, price, originalPrice, category } = product;
+  const addItem = useCartStore((state) => state.addItem);
 
   const increment = () => {
     setQuantity((prev) => {
@@ -28,24 +30,32 @@ export default function ProductSidebar({ product }: Props) {
   };
 
   return (
-    <div className="w-full flex justify-center">
-      <div className="p-10">
-        <h1 className="text-5xl mb-5">{title}</h1>
+    <div className="w-full flex justify-center mx-auto">
+      <div className="p-10 max-w-xl">
+        <h1 className="text-5xl mb-5 font-serif">{title}</h1>
         <p>{description}</p>
-        <p>{price}</p>
+        <div className="flex gap-3">
+          <p className="line-through text-gray-600">{`$${originalPrice}`}</p>
+          <p>{`$${price}`}</p>
+        </div>
         <p>{category}</p>
         <div className="flex max-w-md">
-          <Button onClick={decrement}>-</Button>
+          <Button onClick={decrement} className="rounded-none">
+            -
+          </Button>
           <Input
             value={quantity.toString()}
             type="number"
             onChange={(e) =>
               setQuantity(e.target.value === "" ? 0 : Number(e.target.value))
             }
-            className="text-center"
+            className="text-center rounded-none focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
           />
-          <Button onClick={increment}>+</Button>
+          <Button onClick={increment} className="rounded-none">
+            +
+          </Button>
         </div>
+        <Button onClick={() => addItem(product, quantity)}>Add to cart</Button>
       </div>
     </div>
   );
