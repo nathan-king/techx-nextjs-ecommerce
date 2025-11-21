@@ -68,7 +68,14 @@ export const useCartStore = create<CartStore>()(
           }
         }
       },
+      clearItem: (productId: string) => {
+        const { items } = get();
+        set({
+          items: items.filter((item) => item.product.id !== productId),
+        });
+      },
     }),
+
     {
       name: "cart-storage",
     }

@@ -9,8 +9,11 @@ export default function Header() {
     <div className="max-w-screen block border-b">
       <div className="max-w-7xl mx-auto">
         <div className="mx-auto flex justify-center py-3 items-center relative">
-          <Link href="/" className="font-bold font-serif text-2xl text-primary">
-            TechX
+          <Link
+            href="/"
+            className="font-bold font-heading text-2xl text-primary"
+          >
+            TECHX
           </Link>
           <div className="flex flex-row gap-3 absolute right-0">
             <User />
