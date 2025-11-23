@@ -21,18 +21,25 @@ export default function WishListSheet() {
   const items = useWishStore((state) => state.items);
   const removeItem = useWishStore((state) => state.removeItem);
   const addToCart = useCartStore((state) => state.addItem);
+  const moveAllToCart = () => {
+    items.forEach(({ product }) => addToCart(product, 1));
+  };
 
   return (
     <Sheet>
       <SheetTrigger asChild className="cursor-pointer relative">
-        <div className="relative p-2 rounded-md hover:bg-accent transition-all duration-200 hover:scale-110">
+        <button
+          type="button"
+          aria-label="Open wishlist"
+          className="relative p-2 rounded-md hover:bg-accent transition-all duration-200 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        >
           <Heart className="h-5 w-5 transition-transform duration-200" />
           {items.length > 0 && (
             <span className="absolute -top-1 -right-1 bg-pink-600 text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
               {items.length}
             </span>
           )}
-        </div>
+        </button>
       </SheetTrigger>
       <SheetContent
         side="right"
@@ -82,6 +89,16 @@ export default function WishListSheet() {
                       <span className="capitalize">{product.category}</span>
                       <span>•</span>
                       <span>{product.rating.toFixed(1)} ★</span>
+                      <span>•</span>
+                      <span
+                        className={
+                          product.inventory > 0
+                            ? "text-emerald-600"
+                            : "text-destructive"
+                        }
+                      >
+                        {product.inventory > 0 ? "In stock" : "Out of stock"}
+                      </span>
                     </div>
                     <div className="flex gap-2 pt-1">
                       <Button
@@ -126,13 +143,26 @@ export default function WishListSheet() {
         {items.length > 0 && (
           <>
             <Separator />
-            <div className="p-4 flex items-center justify-between text-sm text-muted-foreground">
-              <span>Go to wishlist page for more actions</span>
-              <SheetClose asChild>
-                <Button variant="outline" size="sm" asChild>
-                  <Link href="/wishlist">Open</Link>
+            <div className="p-4 space-y-2 text-sm text-muted-foreground">
+              <div className="flex flex-wrap gap-2">
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  onClick={moveAllToCart}
+                  className="gap-2"
+                >
+                  <ShoppingCart className="h-4 w-4" />
+                  Move all to cart
                 </Button>
-              </SheetClose>
+                <SheetClose asChild>
+                  <Button variant="outline" size="sm" asChild>
+                    <Link href="/wishlist">Open wishlist</Link>
+                  </Button>
+                </SheetClose>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Tip: you can manage or remove items on the wishlist page.
+              </p>
             </div>
           </>
         )}

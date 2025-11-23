@@ -157,6 +157,7 @@ export default function ProductSidebar({ product }: Props) {
         size="lg"
         className="w-full h-12 text-base font-semibold"
         onClick={toggleWishlist}
+        aria-pressed={inWishlist}
       >
         <Heart
           className="h-4 w-4 mr-2"

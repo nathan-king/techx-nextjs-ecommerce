@@ -16,7 +16,17 @@ export default async function ProductPage({ params }: Props) {
   const product = await getProductBySlug(slug);
 
   if (!product) {
-    return <div>Product doesn't exist</div>;
+    return (
+      <div className="w-full rounded-xl border bg-card/70 p-10 text-center shadow-sm">
+        <h1 className="text-2xl font-bold mb-2">Product not found</h1>
+        <p className="text-muted-foreground mb-6">
+          We couldn&apos;t find this item. It may have been moved or removed.
+        </p>
+        <Link href="/" className="text-primary underline underline-offset-4">
+          Back to home
+        </Link>
+      </div>
+    );
   }
 
   const { title, image, category, tags } = product;

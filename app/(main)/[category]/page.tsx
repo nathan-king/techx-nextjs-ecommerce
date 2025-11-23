@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import { getProductByCategory } from "@/lib/data/products";
 
@@ -13,9 +14,14 @@ export default async function CategoryPage({ params }: Props) {
 
   if (!products || products.length === 0) {
     return (
-      <div className="p-8">
-        <h1 className="text-2xl font-bold">Category: {category}</h1>
-        <p>No products found in this category.</p>
+      <div className="w-full rounded-xl border bg-card/70 p-10 text-center shadow-sm">
+        <h1 className="text-2xl font-bold mb-2">Category: {category}</h1>
+        <p className="text-muted-foreground mb-6">
+          No products found in this category.
+        </p>
+        <Link href="/" className="text-primary underline underline-offset-4">
+          Browse all products
+        </Link>
       </div>
     );
   }

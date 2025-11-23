@@ -61,7 +61,8 @@ export default function ProductCard({ product }: ProductCardProps) {
             toggleWishlist();
           }}
           aria-label={inWishlist ? "Remove from wishlist" : "Add to wishlist"}
-          className="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-background/80 backdrop-blur border shadow-sm hover:scale-105 transition"
+          aria-pressed={inWishlist}
+          className="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-background/80 backdrop-blur border shadow-sm hover:scale-105 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
           <Heart
             className="h-4 w-4 text-primary"
