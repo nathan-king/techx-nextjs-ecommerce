@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default function ProductSidebar({ product }: Props) {
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const { title, description, price, originalPrice, category } = product;
   const addItem = useCartStore((state) => state.addItem);
 

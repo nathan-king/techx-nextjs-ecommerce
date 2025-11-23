@@ -13,6 +13,7 @@ interface CartStore {
   items: CartItem[];
   addItem: (product: Product, quantity?: number) => void;
   removeItem: (product: Product) => void;
+  clearItem: (productID: string) => void;
 }
 
 export const useCartStore = create<CartStore>()(

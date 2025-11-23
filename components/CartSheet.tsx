@@ -13,7 +13,7 @@ import {
   SheetHeader,
 } from "./ui/sheet";
 import { useRouter } from "next/navigation";
-import { Handbag, Minus, Plus, Trash2 } from "lucide-react";
+import { Handbag, Minus, Plus, Trash2, X } from "lucide-react";
 import { Separator } from "./ui/separator";
 import Image from "next/image";
 
@@ -36,34 +36,36 @@ export default function Cart() {
   return (
     <Sheet>
       <SheetTrigger asChild className="cursor-pointer">
-        <div className="relative p-2 rounded-md hover:bg-accent transition-colors duration-200">
-          <Handbag className="h-5 w-5" />
+        <div className="relative p-2 rounded-md hover:bg-accent transition-all duration-200 hover:scale-110">
+          <Handbag className="h-5 w-5 transition-transform duration-200" />
           {items.length > 0 && (
-            <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center text-md">
+            <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium animate-pulse">
               {items.length}
             </span>
           )}
         </div>
       </SheetTrigger>
       <SheetContent
-        className="flex flex-col w-full sm:max-w-md overflow-hidden p-0"
+        className="flex flex-col w-full sm:max-w-md overflow-hidden p-0 border-l-0 shadow-2xl"
         side="right"
       >
         <SheetHeader className="px-6 py-4 border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
-          <SheetTitle className="text-xl font-bold flex items-center gap-2">
-            Your Cart
-            {items.length > 0 && (
-              <span className="text-sm font-normal text-muted-foreground">
-                ({items.reduce((sum, item) => sum + item.quantity, 0)} items)
-              </span>
-            )}
-          </SheetTitle>
+          <div className="flex items-center justify-between">
+            <SheetTitle className="text-xl font-bold flex items-center gap-2">
+              Your Cart
+              {items.length > 0 && (
+                <span className="text-sm font-normal text-muted-foreground">
+                  ({items.reduce((sum, item) => sum + item.quantity, 0)} items)
+                </span>
+              )}
+            </SheetTitle>
+          </div>
         </SheetHeader>
 
         <div className="flex-1 overflow-y-auto">
           {items.length > 0 ? (
             <div className="p-4 space-y-4">
-              {items.map((item) => {
+              {items.map((item, index) => {
                 const { product, quantity } = item;
                 const { title, price, image } = product;
                 const itemTotal = price * quantity;
@@ -71,7 +73,11 @@ export default function Cart() {
                 return (
                   <div
                     key={item.id}
-                    className="group relative p-4 rounded-lg border bg-card hover:bg-accent/50 transition-all duration-300 animate-in fade-in-0 slide-in-from-right-5"
+                    className="group relative p-4 rounded-lg border bg-card hover:bg-accent/50 transition-all duration-300"
+                    style={{
+                      animationDelay: `${index * 50}ms`,
+                      animation: "fadeInRight 0.3s ease-out both",
+                    }}
                   >
                     <button
                       onClick={() => clearItem(product.id)}
@@ -106,7 +112,7 @@ export default function Cart() {
                               variant="outline"
                               size="sm"
                               onClick={() => removeItem(product)}
-                              className="h-8 w-8 p-0 hover:bg-destructive hover:text-destructive-foreground transition-colors"
+                              className="h-8 w-8 p-0 hover:bg-destructive hover:text-destructive-foreground transition-all duration-200 hover:scale-110"
                             >
                               <Minus className="h-3 w-3" />
                             </Button>
@@ -117,7 +123,7 @@ export default function Cart() {
                               variant="outline"
                               size="sm"
                               onClick={() => addItem(product)}
-                              className="h-8 w-8 p-0 hover:bg-primary hover:text-primary-foreground transition-colors"
+                              className="h-8 w-8 p-0 hover:bg-primary hover:text-primary-foreground transition-all duration-200 hover:scale-110"
                             >
                               <Plus className="h-3 w-3" />
                             </Button>
@@ -135,14 +141,21 @@ export default function Cart() {
               })}
             </div>
           ) : (
-            <div className="flex flex-col items-center justify-center min-h-64 p-8 text-center animate-in fade-in-0">
+            <div
+              className="flex flex-col items-center justify-center min-h-64 p-8 text-center"
+              style={{ animation: "fadeIn 0.5s ease-out" }}
+            >
+              <Handbag className="h-16 w-16 text-muted-foreground/50 mb-4" />
               <h3 className="text-lg font-semibold mb-2">Your cart is empty</h3>
               <p className="text-muted-foreground mb-6">
                 Add some items to get started
               </p>
               <SheetClose asChild>
-                <Button asChild>
-                  <Link href="/">Continue Shopping</Link>
+                <Button
+                  asChild
+                  className="transition-all duration-200 hover:scale-105"
+                >
+                  <Link href="/products">Continue Shopping</Link>
                 </Button>
               </SheetClose>
             </div>
@@ -152,7 +165,10 @@ export default function Cart() {
         {items.length > 0 && (
           <>
             <Separator />
-            <div className="p-6 bg-muted/50 space-y-4 animate-in fade-in-0 slide-in-from-bottom-5">
+            <div
+              className="p-6 bg-muted/50 space-y-4"
+              style={{ animation: "fadeInUp 0.4s ease-out" }}
+            >
               <div className="flex justify-between items-center text-lg">
                 <span className="font-semibold">Total:</span>
                 <span className="font-bold text-xl text-primary">
@@ -164,7 +180,7 @@ export default function Cart() {
                 <SheetClose asChild>
                   <Button
                     onClick={handleGoToCart}
-                    className="w-full h-12 text-base font-semibold transition-all duration-200 hover:scale-[1.02]"
+                    className="w-full h-12 text-base font-semibold transition-all duration-200 hover:scale-[1.02] bg-primary hover:bg-primary/90"
                   >
                     Proceed to Checkout
                   </Button>
@@ -174,9 +190,9 @@ export default function Cart() {
                   <Button
                     variant="outline"
                     asChild
-                    className="w-full transition-colors duration-200"
+                    className="w-full transition-all duration-200 hover:scale-[1.02]"
                   >
-                    <Link href="/">Continue Shopping</Link>
+                    <Link href="/products">Continue Shopping</Link>
                   </Button>
                 </SheetClose>
               </div>
