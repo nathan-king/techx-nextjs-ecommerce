@@ -39,7 +39,7 @@ export default function Cart() {
         <div className="relative p-2 rounded-md hover:bg-accent transition-all duration-200 hover:scale-110">
           <Handbag className="h-5 w-5 transition-transform duration-200" />
           {items.length > 0 && (
-            <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium animate-pulse">
+            <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
               {items.length}
             </span>
           )}
@@ -49,7 +49,7 @@ export default function Cart() {
         className="flex flex-col w-full sm:max-w-md overflow-hidden p-0 border-l-0 shadow-2xl"
         side="right"
       >
-        <SheetHeader className="px-6 py-4 border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
+        <SheetHeader className="px-6 py-4 border-b bg-background/95 backdrop-blur supports-[backdrop-filter:blur(0)]:bg-background/60 supports-[backdrop-filter:blur(0)]:backdrop-blur">
           <div className="flex items-center justify-between">
             <SheetTitle className="text-xl font-bold flex items-center gap-2">
               Your Cart
@@ -81,9 +81,9 @@ export default function Cart() {
                   >
                     <button
                       onClick={() => clearItem(product.id)}
-                      className="absolute -top-2 -right-2 opacity-0 group-hover:opacity-100 bg-destructive text-destructive-foreground p-1 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-10"
+                      className="absolute -top-2 -right-2 opacity-0 group-hover:opacity-100 border-1 bg-background text-destructive-foreground p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-10"
                     >
-                      <Trash2 className="h-3 w-3" />
+                      <X className="h-3 w-3" />
                     </button>
 
                     <div className="flex gap-3">

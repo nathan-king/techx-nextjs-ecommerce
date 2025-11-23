@@ -6,6 +6,16 @@
 @custom-variant active (&:active);
 @custom-variant group-hover (&:is(.group:hover *));
 
+@custom-variant data-open (&[data-state="open"]);
+@custom-variant data-closed (&[data-state="closed"]);
+@custom-variant data-active (&[data-state="active"]);
+@custom-variant data-visible (&[data-state="visible"]);
+@custom-variant data-hidden (&[data-state="hidden"]);
+@custom-variant group-data-open (&:is(.group[data-state="open"] *));
+@custom-variant group-data-closed (&:is(.group[data-state="closed"] *));
+@custom-variant group-data-visible (&:is(.group[data-state="visible"] *));
+@custom-variant group-data-hidden (&:is(.group[data-state="hidden"] *));
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -125,6 +135,11 @@
   body {
     @apply bg-background text-foreground;
   }
+  body[data-scroll-locked] {
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+    --removed-body-scroll-bar-size: 0px !important;
+  }
 }
 
 @keyframes fadeInRight {
@@ -158,76 +173,78 @@
   }
 }
 
-@layer utilities {
-  .animate-in {
-    animation-duration: 0.3s;
-    animation-fill-mode: both;
-    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+@keyframes fade-in-0 {
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
 
-  .animate-out {
-    animation-duration: 0.3s;
-    animation-fill-mode: both;
-    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+@keyframes fade-out-0 {
+  from {
+    opacity: 1;
   }
+  to {
+    opacity: 0;
+  }
+}
 
-  @keyframes fade-in-0 {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+@keyframes slide-in-from-right {
+  from {
+    transform: translateX(100%);
   }
-  .fade-in-0 {
-    animation-name: fade-in-0;
-    animation-duration: 0.3s;
-    animation-fill-mode: both;
-    animation-timing-function: ease-out;
+  to {
+    transform: translateX(0);
   }
+}
 
-  @keyframes fade-out-0 {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
+@keyframes slide-out-to-right {
+  from {
+    transform: translateX(0);
   }
-  .fade-out-0 {
-    animation-name: fade-out-0;
-    animation-duration: 0.3s;
-    animation-fill-mode: both;
-    animation-timing-function: ease-in;
+  to {
+    transform: translateX(100%);
   }
+}
 
-  @keyframes slide-in-from-right {
-    from {
-      transform: translateX(100%);
-    }
-    to {
-      transform: translateX(0);
-    }
-  }
-  .slide-in-from-right {
-    animation-name: slide-in-from-right;
-    animation-duration: 0.4s;
-    animation-fill-mode: both;
-    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-  }
+@utility animate-in {
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-  @keyframes slide-out-to-right {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(100%);
-    }
-  }
-  .slide-out-to-right {
-    animation-name: slide-out-to-right;
-    animation-duration: 0.3s;
-    animation-fill-mode: both;
-    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-  }
+@utility animate-out {
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@utility fade-in-0 {
+  animation-name: fade-in-0;
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+  animation-timing-function: ease-out;
+}
+
+@utility fade-out-0 {
+  animation-name: fade-out-0;
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in;
+}
+
+@utility slide-in-from-right {
+  animation-name: slide-in-from-right;
+  animation-duration: 0.4s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@utility slide-out-to-right {
+  animation-name: slide-out-to-right;
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
