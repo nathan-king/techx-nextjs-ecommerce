@@ -22,8 +22,8 @@ export default async function ProductPage({ params }: Props) {
   const { title, image, category, tags } = product;
 
   return (
-    <div className="bg-gradient-to-b from-background to-muted/40">
-      <div className="mx-auto flex max-w-7xl flex-col gap-10 px-6 py-10 lg:py-14">
+    <div className="bg-gradient-to-b from-background to-muted/40 w-full">
+      <div className="flex flex-col gap-10 w-full">
         <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
           <Link href="/" className="hover:text-foreground">
             Home
