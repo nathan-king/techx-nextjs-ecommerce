@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Star, Tag, ShieldCheck, Truck } from "lucide-react";
+import { Star, Tag, ShieldCheck, Truck, Heart } from "lucide-react";
 
 import { Product } from "@/lib/types";
 import { useCartStore } from "@/lib/store/cart-store";
+import { useWishStore } from "@/lib/store/wish-list-store";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
@@ -26,6 +27,18 @@ export default function ProductSidebar({ product }: Props) {
     inventory,
   } = product;
   const addItem = useCartStore((state) => state.addItem);
+  const wishlistItems = useWishStore((state) => state.items);
+  const addWish = useWishStore((state) => state.addItem);
+  const removeWish = useWishStore((state) => state.removeItem);
+
+  const inWishlist = wishlistItems.some((item) => item.product.id === product.id);
+  const toggleWishlist = () => {
+    if (inWishlist) {
+      removeWish(product.id);
+    } else {
+      addWish(product);
+    }
+  };
 
   const increment = () => setQuantity((prev) => prev + 1);
   const decrement = () => setQuantity((prev) => (prev > 1 ? prev - 1 : prev));
@@ -94,11 +107,11 @@ export default function ProductSidebar({ product }: Props) {
         </div>
       </div>
 
+      <label className="text-sm font-medium text-muted-foreground">
+        Quantity
+      </label>
       <div className="space-y-3">
-        <label className="text-sm font-medium text-muted-foreground">
-          Quantity
-        </label>
-        <div className="flex max-w-xs items-center overflow-hidden rounded-lg border bg-background">
+        <div className="inline-flex w-fit items-center overflow-hidden rounded-lg border bg-background shadow-sm">
           <Button
             type="button"
             onClick={decrement}
@@ -137,6 +150,19 @@ export default function ProductSidebar({ product }: Props) {
         disabled={inventory === 0}
       >
         Add to cart
+      </Button>
+
+      <Button
+        variant={inWishlist ? "secondary" : "outline"}
+        size="lg"
+        className="w-full h-12 text-base font-semibold"
+        onClick={toggleWishlist}
+      >
+        <Heart
+          className="h-4 w-4 mr-2"
+          fill={inWishlist ? "currentColor" : "none"}
+        />
+        {inWishlist ? "Remove from wishlist" : "Add to wishlist"}
       </Button>
 
       <div className="grid gap-3 rounded-lg border bg-muted/40 p-4 text-sm text-muted-foreground">

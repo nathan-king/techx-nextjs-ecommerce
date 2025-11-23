@@ -22,7 +22,7 @@ export default async function ProductPage({ params }: Props) {
   const { title, image, category, tags } = product;
 
   return (
-    <div className="bg-gradient-to-b from-background to-muted/40 w-full">
+    <div className="bg-linear-to-b from-background to-muted/40 w-full">
       <div className="flex flex-col gap-10 w-full">
         <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
           <Link href="/" className="hover:text-foreground">
@@ -46,36 +46,6 @@ export default async function ProductPage({ params }: Props) {
                 />
               </div>
             </div>
-
-            <div className="grid gap-3 rounded-xl border bg-card/60 p-4 text-sm text-muted-foreground shadow-sm sm:grid-cols-2">
-              <div className="flex items-start gap-2">
-                <ShieldCheck className="h-4 w-4 text-primary mt-0.5" />
-                <span>30-day returns and secure checkout.</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <Truck className="h-4 w-4 text-primary mt-0.5" />
-                <span>Free shipping on orders over $100.</span>
-              </div>
-            </div>
-
-            {tags?.length ? (
-              <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-                <Tag className="h-4 w-4" />
-                {tags.slice(0, 5).map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full bg-muted px-3 py-1 font-medium"
-                  >
-                    {tag}
-                  </span>
-                ))}
-                {tags.length > 5 && (
-                  <span className="rounded-full bg-muted px-3 py-1 font-medium">
-                    +{tags.length - 5} more
-                  </span>
-                )}
-              </div>
-            ) : null}
           </div>
 
           <ProductSideBar product={product} />

@@ -1,7 +1,8 @@
 import Link from "next/link";
 import NavBar from "../NavBar";
 import CartSheet from "../CartSheet";
-import { Heart, User } from "lucide-react";
+import WishListSheet from "../WishListSheet";
+import { User } from "lucide-react";
 import { Separator } from "../ui/separator";
 
 export default function Header() {
@@ -15,9 +16,9 @@ export default function Header() {
           >
             TECHX
           </Link>
-          <div className="flex flex-row gap-3 absolute right-0">
-            <User />
-            <Heart />
+          <div className="flex flex-row gap-3 absolute right-0 items-center">
+            <User className="h-5 w-5" />
+            <WishListSheet />
             <CartSheet />
           </div>
         </div>

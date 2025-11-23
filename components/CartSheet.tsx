@@ -81,7 +81,7 @@ export default function Cart() {
                   >
                     <button
                       onClick={() => clearItem(product.id)}
-                      className="absolute -top-2 -right-2 opacity-0 group-hover:opacity-100 border-1 bg-background text-destructive-foreground p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-10"
+                      className="absolute -top-2 -right-2 opacity-0 group-hover:opacity-100 border bg-background text-destructive-foreground p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-10"
                     >
                       <X className="h-3 w-3" />
                     </button>

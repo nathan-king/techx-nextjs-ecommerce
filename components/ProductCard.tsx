@@ -6,7 +6,8 @@ import Image from "next/image";
 import { Rating } from "@smastrom/react-rating";
 import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/lib/store/cart-store";
-import { Tag, Star } from "lucide-react";
+import { useWishStore } from "@/lib/store/wish-list-store";
+import { Tag, Heart } from "lucide-react";
 
 import "@smastrom/react-rating/style.css";
 
@@ -31,6 +32,18 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   const items = useCartStore((state) => state.items);
   const addItem = useCartStore((state) => state.addItem);
+  const wishlistItems = useWishStore((state) => state.items);
+  const addWish = useWishStore((state) => state.addItem);
+  const removeWish = useWishStore((state) => state.removeItem);
+  const inWishlist = wishlistItems.some((item) => item.product.id === product.id);
+
+  const toggleWishlist = () => {
+    if (inWishlist) {
+      removeWish(product.id);
+    } else {
+      addWish(product);
+    }
+  };
   const onSale =
     typeof originalPrice === "number" && originalPrice > price
       ? Math.round(((originalPrice - price) / originalPrice) * 100)
@@ -41,6 +54,20 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <div className="group relative flex h-full flex-col overflow-hidden rounded-xl border bg-card/70 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
       <Link href={`products/${slug}`} className="relative block aspect-square">
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            toggleWishlist();
+          }}
+          aria-label={inWishlist ? "Remove from wishlist" : "Add to wishlist"}
+          className="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-background/80 backdrop-blur border shadow-sm hover:scale-105 transition"
+        >
+          <Heart
+            className="h-4 w-4 text-primary"
+            fill={inWishlist ? "currentColor" : "none"}
+          />
+        </button>
         {onSale && (
           <span className="absolute left-3 top-3 z-10 rounded-full bg-destructive/90 px-2.5 py-1 text-xs font-semibold text-destructive-foreground shadow-sm">
             -{onSale}%
