@@ -43,7 +43,7 @@ export default function WishListSheet() {
       </SheetTrigger>
       <SheetContent
         side="right"
-        className="flex flex-col w-full sm:max-w-md overflow-hidden p-0 border-l-0 shadow-2xl"
+        className="flex flex-col w-full sm:max-w-md overflow-hidden p-0 border-l-0 shadow-2xl glass-panel"
       >
         <SheetHeader className="px-6 py-4 border-b bg-background/95 backdrop-blur supports-[backdrop-filter:blur(0)]:bg-background/60">
           <div className="flex items-center justify-between">

@@ -12,7 +12,7 @@ export default function CartPage() {
   const removeItem = useCartStore((state) => state.removeItem);
 
   return (
-    <Card className="w-full">
+    <Card className="w-full glass-panel">
       <div className="p-6 sm:p-8 space-y-6">
         <h1 className="text-2xl font-bold">Your Cart</h1>
         {items.length > 0 ? (

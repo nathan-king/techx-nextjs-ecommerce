@@ -43,7 +43,7 @@ export default async function ProductPage({ params }: Props) {
         </div>
 
         <div className="grid items-start gap-6 lg:grid-cols-2 xl:grid-cols-[1.3fr,0.7fr]">
-          <div className="space-y-4 rounded-2xl border bg-card/80 shadow-lg p-4 lg:p-6">
+          <div className="space-y-4 rounded-2xl glass-panel p-4 lg:p-6">
             <div className="relative overflow-hidden rounded-xl border bg-muted/20">
               <div className="relative aspect-square">
                 <Image

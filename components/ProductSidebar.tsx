@@ -54,7 +54,7 @@ export default function ProductSidebar({ product }: Props) {
     inventory > 10 ? "In stock" : inventory > 0 ? "Low stock" : "Out of stock";
 
   return (
-    <aside className="w-full mx-auto max-w-2xl rounded-xl bg-card/60 p-8 space-y-6 backdrop-blur-sm">
+    <aside className="w-full mx-auto max-w-2xl rounded-xl glass-panel p-8 space-y-6">
       <div className="space-y-2">
         <div className="flex items-center gap-3">
           <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">

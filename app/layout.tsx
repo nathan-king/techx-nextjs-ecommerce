@@ -31,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="overflow-y-scroll">
+    <html lang="en" className="overflow-y-scroll dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${obitron.variable} antialiased max-w-screen`}
       >

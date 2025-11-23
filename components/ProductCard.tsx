@@ -52,7 +52,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     inventory > 10 ? "In stock" : inventory > 0 ? "Low stock" : "Out of stock";
 
   return (
-    <div className="group relative flex h-full flex-col overflow-hidden rounded-xl border bg-card/70 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+    <div className="group relative flex h-full flex-col overflow-hidden rounded-xl glass-panel transition hover:-translate-y-1 hover:shadow-lg">
       <Link href={`products/${slug}`} className="relative block aspect-square">
         <button
           type="button"
