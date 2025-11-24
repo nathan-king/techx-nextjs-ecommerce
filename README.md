@@ -19,19 +19,16 @@ Created as part of my web development portfolio.
 
 ## Running the Project
 
-```
-npm run dev
+`npm run dev`
 
 # or
 
-yarn dev
+`yarn dev`
 
 # or
 
-pnpm dev
+`pnpm dev`
 
 # or
 
-bun dev
-
-```
+`bun dev`
