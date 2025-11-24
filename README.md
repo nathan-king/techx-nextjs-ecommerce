@@ -21,14 +21,14 @@ Created as part of my web development portfolio.
 
 `npm run dev`
 
-# or
+or
 
 `yarn dev`
 
-# or
+or
 
 `pnpm dev`
 
-# or
+or
 
 `bun dev`
