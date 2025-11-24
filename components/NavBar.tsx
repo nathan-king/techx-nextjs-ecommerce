@@ -85,16 +85,6 @@ export default function NavBar() {
             <SheetHeader className="px-5 py-4 border-b bg-background/95 backdrop-blur supports-[backdrop-filter:blur(0)]:bg-background/60">
               <div className="flex items-center justify-between">
                 <SheetTitle className="text-lg font-semibold">Menu</SheetTitle>
-                <SheetClose asChild>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    aria-label="Close navigation"
-                    className="hover:bg-accent"
-                  >
-                    <X className="h-5 w-5" />
-                  </Button>
-                </SheetClose>
               </div>
             </SheetHeader>
             <div className="flex flex-col gap-1.5 px-5 pb-6">
