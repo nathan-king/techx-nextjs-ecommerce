@@ -19,7 +19,8 @@ Created as part of my web development portfolio.
 
 ## Running the Project
 
-```npm run dev
+```
+npm run dev
 
 # or
 
