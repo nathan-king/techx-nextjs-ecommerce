@@ -1,6 +1,5 @@
 import { Product } from "@/lib/types";
 import { products } from "../constants/products";
-import { slugify } from "../utils";
 
 export const getProducts = async (): Promise<Product[]> => {
   await new Promise((resolve) => setTimeout(resolve, 100));
@@ -19,6 +18,5 @@ export const getProductByCategory = async (
   const productArray = products.filter(
     (product) => product.category === category
   );
-  console.log(productArray);
   return productArray.length > 0 ? productArray : null;
 };

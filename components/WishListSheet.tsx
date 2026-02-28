@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Heart, ShoppingCart, Trash2, X } from "lucide-react";
+import { Heart, ShoppingCart, Trash2 } from "lucide-react";
 
 import { useWishStore } from "@/lib/store/wish-list-store";
 import { useCartStore } from "@/lib/store/cart-store";

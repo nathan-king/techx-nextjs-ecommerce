@@ -9,11 +9,10 @@ import {
   SheetTitle,
   SheetTrigger,
   SheetClose,
-  SheetFooter,
   SheetHeader,
 } from "./ui/sheet";
 import { useRouter } from "next/navigation";
-import { Handbag, Minus, Plus, Trash2, X } from "lucide-react";
+import { Handbag, Minus, Plus, X } from "lucide-react";
 import { Separator } from "./ui/separator";
 import Image from "next/image";
 

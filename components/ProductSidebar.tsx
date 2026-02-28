@@ -44,10 +44,6 @@ export default function ProductSidebar({ product }: Props) {
 
   const increment = () => setQuantity((prev) => prev + 1);
   const decrement = () => setQuantity((prev) => (prev > 1 ? prev - 1 : prev));
-  const handleChange = (value: number) => {
-    if (value > 0) setQuantity(value);
-  };
-
   const onSale =
     typeof originalPrice === "number" && originalPrice > price
       ? Math.round(((originalPrice - price) / originalPrice) * 100)

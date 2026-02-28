@@ -17,7 +17,7 @@ import {
   SheetTitle,
 } from "./ui/sheet";
 import { Button } from "./ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 

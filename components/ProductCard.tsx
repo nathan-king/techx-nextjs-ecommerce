@@ -30,7 +30,6 @@ export default function ProductCard({ product }: ProductCardProps) {
     inventory,
   } = product;
 
-  const items = useCartStore((state) => state.items);
   const addItem = useCartStore((state) => state.addItem);
   const wishlistItems = useWishStore((state) => state.items);
   const addWish = useWishStore((state) => state.addItem);

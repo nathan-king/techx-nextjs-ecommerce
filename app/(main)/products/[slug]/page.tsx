@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Tag, Truck, ShieldCheck } from "lucide-react";
 
 import { getProductBySlug } from "@/lib/data/products";
 import ProductSideBar from "@/components/ProductSidebar";
@@ -29,7 +28,7 @@ export default async function ProductPage({ params }: Props) {
     );
   }
 
-  const { title, image, category, tags } = product;
+  const { title, image } = product;
 
   return (
     <div className="bg-linear-to-b from-background to-muted/40 w-full">
